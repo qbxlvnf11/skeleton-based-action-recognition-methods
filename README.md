@@ -13,6 +13,7 @@ Contents & Descriptions
   journal = {IEEE Conference on Computer Vision and Pattern Recognition, 2019},
   year={2019}
 }
+```
 
 - Original repository link: https://github.com/lshiwjx/2s-AGCN
 
