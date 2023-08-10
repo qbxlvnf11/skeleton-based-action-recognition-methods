@@ -15,6 +15,6 @@ Contents & Descriptions
 }
 ```
 
-- Original repository link: https://github.com/lshiwjx/2s-AGCN
-
 - Test/Customization codes: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN
+
+- Original repository link: https://github.com/lshiwjx/2s-AGCN
