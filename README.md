@@ -1,7 +1,14 @@
 Skeleton Based Action Recognition Methods
 =============
 
-Contents & Descriptions
+#### - 2s-AGCN
+  - A computer vision task that involves recognizing human actions from a sequence of 3D skeletal joint data
+  - The goal of skeleton-based action recognition is to develop algorithms that can understand and classify human actions from skeleton data
+  - The gcn-based method (extracting visual features) and the cnn-based method (extracting graph features) are mainly used.
+
+#### - Goals of this repository
+  - Many skeleton-based action-recognition-methods implementation/test/customization etc.
+   
 =============
 
 #### - 2s-AGCN
@@ -15,6 +22,4 @@ Contents & Descriptions
 }
 ```
 
-- Test/Customization codes: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN
-
-- Original repository link: https://github.com/lshiwjx/2s-AGCN
+  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN
