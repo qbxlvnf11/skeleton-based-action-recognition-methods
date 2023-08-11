@@ -1,7 +1,7 @@
 Skeleton Based Action Recognition Methods
 =============
 
-#### - 2s-AGCN
+#### - Skeleton-based action recognition
   - A computer vision task that involves recognizing human actions from a sequence of 3D skeletal joint data
   - The goal of skeleton-based action recognition is to develop algorithms that can understand and classify human actions from skeleton data
   - The gcn-based method (extracting visual features) and the cnn-based method (extracting graph features) are mainly used.
