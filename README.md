@@ -40,7 +40,7 @@
 Structures of Project Folders 
 =============
 
-#### - After Download Data and Data Preparation
+#### - After download data, pre-trained weights of 2s-AGCN and data preparation
 
 ```
 ${ROOT}
@@ -80,8 +80,30 @@ ${ROOT}
             |   |   |   |   |   |-- train_label.pkl
             |   |   |   |   |   |-- val_data_bone.npy
             |   |   |   |   |   |-- val_data_joint.npy
-            |   |   |   |   |   |-- val_label.pkl         
+            |   |   |   |   |   |-- val_label.pkl
+            |   |   |   |-- pre_train
+            |   |   |   |   |   |-- ki_agcn_bone
+            |   |   |   |   |   |   |   |-- ki_agcn_bone-64-122070.pt
+            |   |   |   |   |   |-- ki_agcn_joint
+            |   |   |   |   |   |   |   |-- ki_agcn_joint-64-122070.pt
+            |   |   |   |   |   |-- ntu_cs_agcn_bone
+            |   |   |   |   |   |   |   |-- ntu_cs_agcn_bone-49-62600.pt
+            |   |   |   |   |   |-- ntu_cs_agcn_joint
+            |   |   |   |   |   |   |   |-- ntu_cs_agcn_joint-49-62600.pt
+            |   |   |   |   |   |-- ntu_cv_agcn_bone
+            |   |   |   |   |   |   |   |-- ntu_cv_agcn_bone-49-58800.pt
+            |   |   |   |   |   |-- ntu_cv_agcn_joint
+            |   |   |   |   |   |   |   |-- ntu_cv_agcn_joint-49-58800.pt
 ```
+
+
+Download Pretrained Weights
+=============
+
+#### - Download 2s-AGCN (J-stream & B-stream model) weights of each dataset
+  - Password: 1234
+
+http://naver.me/FGFs4Fw8
 
 
 Docker Environments
