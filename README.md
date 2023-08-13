@@ -99,10 +99,10 @@ ${ROOT}
 ```
 
 
-Download Pretrained Weights
+Download Pretrained Weights, Test Scores
 =============
 
-#### - Download 2s-AGCN (J-stream & B-stream model) weights of each dataset
+#### - Download 2s-AGCN (J-stream & B-stream model) weights of each dataset and score file
   - Password: 1234
 
 http://naver.me/FGFs4Fw8
