@@ -1,6 +1,8 @@
 2s-AGCN
 =============
 
+#### - ﻿Test & Customizing Pytorch 2s-AGCN code in [official repository](https://github.com/lshiwjx/2s-AGCN)
+
 #### - ﻿2s-AGCN (Two-Stream Adaptive Graph Convolutional Network)
   
   - The topology of the graph in 2s-AGCN: uniformly or individually learned by the BP algorithm in an end-to-end manner
