@@ -23,3 +23,16 @@ Skeleton Based Action Recognition Methods
 ```
 
   - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN
+
+#### - PoseC3D
+
+```
+@article{PoseC3D,
+  title={Revisiting Skeleton-based Action Recognition},
+  author={Haodong Duan, Yue Zhao, Kai Chen, Dahua Lin, Bo Dai},
+  journal = {IEEE Conference on Computer Vision and Pattern Recognition, 2022},
+  year={2022}
+}
+```
+
+  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D
