@@ -10,7 +10,7 @@ Skeleton Based Action Recognition Methods
   - Many skeleton-based action-recognition-methods implementation/test/customization etc.
 
 
-Methods List
+Model List
 =============
 
 #### - 2s-AGCN
