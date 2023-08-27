@@ -8,7 +8,9 @@ Skeleton Based Action Recognition Methods
 
 #### - Goals of this repository
   - Many skeleton-based action-recognition-methods implementation/test/customization etc.
-   
+
+
+Methods List
 =============
 
 #### - 2s-AGCN
@@ -36,3 +38,52 @@ Skeleton Based Action Recognition Methods
 ```
 
   - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D
+
+
+Datasets
+=============
+
+#### - NTU RGB+D
+
+  - ﻿﻿Download link: https://github.com/shahroudy/NTURGB-D
+  
+  - Data volume and classes
+    - 56,000 action clips in 60 action classes
+    - Kind of classes
+      - NTU RGB+D: A1 to A60, NTU RGB+D 120: A1 to A120
+
+<p align="center">
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/b75d08bf-3061-4a2b-a3a7-ededa3acdcd2" width="85%"></img> 
+</p>
+  
+  - Details of data
+    - Each action is captured by 3 cameras at the same height but from different horizontal angles: −45, 0, 45
+    - 3D joint locations of each frame detected by Kinect depth sensors
+    - 25 joints for each subject in the skeleton sequences, while each video has no more than 2 subjects
+    
+  - Cross-subject (X-Sub) Train/Valid subset
+    - Training set: 40,320 clips
+    - validation set: 16,560 
+    - The actors in the two subsets are different
+
+  - Cross-view (X-View) Train/Valid subset
+    - Training set (captured by cameras 2 and 3): 37,920 clips
+    - validation set (captured by camera 1): 18,960
+
+#### - Kinetics-skeleton
+
+  - ﻿﻿Download link: https://github.com/open-mmlab/mmskeleton/blob/master/doc/START_RECOGNITION.md
+  
+  - Data volume and classes
+    - 300,000 videos clips in 400 classes from YouTube videos
+    - Kind of classes: refer to https://arxiv.org/pdf/1705.06950.pdf
+    
+  - Details of data
+    - Raw video clips without skeleton data: estimate the locations of 18 joints on every frame of the clips using the publicly available OpenPose toolbox
+  
+  - Train/Valid subset
+    - Training set: 240,000 clips
+    - Validation set: 20,000 clips
+    - Filtering some data using samples_with_missing_skeletons.txt
+
+    
