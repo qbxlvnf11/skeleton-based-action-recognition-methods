@@ -68,7 +68,7 @@ Datasets
 
   - Cross-view (X-View) Train/Valid subset
     - Training set (captured by cameras 2 and 3): 37,920 clips
-    - validation set (captured by camera 1): 18,960
+    - validation set (captured by camera 1): 18,960 clips
 
 #### - Kinetics-skeleton
 
@@ -86,4 +86,36 @@ Datasets
     - Validation set: 20,000 clips
     - Filtering some data using samples_with_missing_skeletons.txt
 
+#### - FineGym
+
+  - ﻿﻿Download link: https://sdolivia.github.io/FineGym/
     
+  - Data volume and classes
+    - 29K videos clips in 99 classes from 303 competition recores, amounted to about 708 hour
+    - Kind of classes
+      - GYM99 (a more balanced setting): refer to https://sdolivia.github.io/FineGym/resources/dataset/gym99_categories.txt
+      - GYM288 (a natural long-tailed setting): refer to https://sdolivia.github.io/FineGym/resources/dataset/gym288_categories.txt
+        
+  - Details of data
+    - Organizing both the semantic and temporal annotations hierarchically
+    - Semantic annotations: three-level categories of actions and sub-actions
+      - Events
+        - Coarsest level of the hierarchy
+        - Actions belonging to different gymnastic routines
+        - E.g. vault (VT), floor exercise (FX), uneven-bars (UB), and balance-beam (BB)
+      - Sets
+        - Mid-level categories
+        - Describing sub-actions
+        - A set holds several technically and visually similar elements
+        - E.g. Flight-handspring, Beam-Turns, Flight-Salto etc.
+      - Elements
+        - Finest granularity are element categories
+        - Equips sub-actions with more detailed descriptions than the set categories
+        - E.g. a sub-action instance of the set beam-dismounts could be more precisely described as double salto backward tucked or other element categories in the set.
+    -  Two-levels temporal annotations
+      - Locations of all events in a video
+      - Locations of sub-actions in an action instance (i.e. event instance)
+
+  - Train/Valid subset
+    - Training set: 20,484 clips
+    - Validation set: 8,521 clips
