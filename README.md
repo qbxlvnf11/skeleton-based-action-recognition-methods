@@ -92,6 +92,7 @@ Datasets
     
   - Data volume and classes
     - 29K videos clips in 99 classes from 303 competition recores, amounted to about 708 hour
+      
     - Kind of classes
       - GYM99 (a more balanced setting): refer to https://sdolivia.github.io/FineGym/resources/dataset/gym99_categories.txt
       - GYM288 (a natural long-tailed setting): refer to https://sdolivia.github.io/FineGym/resources/dataset/gym288_categories.txt
@@ -118,6 +119,6 @@ Datasets
       - Locations of all events in a video
       - Locations of sub-actions in an action instance (i.e. event instance)
 
-    - Train/Valid subset
-      - Training set: 20,484 clips
-      - Validation set: 8,521 clips
+  - Train/Valid subset
+    - Training set: 20,484 clips
+    - Validation set: 8,521 clips
