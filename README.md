@@ -114,7 +114,7 @@ Datasets
         - Equips sub-actions with more detailed descriptions than the set categories
         - E.g. a sub-action instance of the set beam-dismounts could be more precisely described as double salto backward tucked or other element categories in the set.
           
-    -  Two-levels temporal annotations
+    - Two-levels temporal annotations
       - Locations of all events in a video
       - Locations of sub-actions in an action instance (i.e. event instance)
 
