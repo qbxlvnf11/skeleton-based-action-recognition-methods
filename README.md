@@ -43,7 +43,7 @@ Model List
 Datasets
 =============
 
-#### - NTU RGB+D
+### - NTU RGB+D
 
   - ﻿﻿Download link: https://github.com/shahroudy/NTURGB-D
   
@@ -70,7 +70,7 @@ Datasets
     - 3D joint locations of each frame detected by Kinect depth sensors
     - 25 joints for each subject in the skeleton sequences, while each video has no more than 2 subjects
 
-#### - Kinetics-skeleton
+### - Kinetics-skeleton
 
   - ﻿﻿Download link: https://github.com/open-mmlab/mmskeleton/blob/master/doc/START_RECOGNITION.md
   
@@ -86,7 +86,7 @@ Datasets
   - Details of data
     - Raw video clips without skeleton data: estimate the locations of 18 joints on every frame of the clips using the publicly available OpenPose toolbox
 
-#### - FineGym
+### - FineGym
 
   - ﻿﻿Download link: https://sdolivia.github.io/FineGym/
     
