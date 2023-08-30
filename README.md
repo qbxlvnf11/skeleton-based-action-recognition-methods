@@ -118,6 +118,6 @@ Datasets
       - Locations of all events in a video
       - Locations of sub-actions in an action instance (i.e. event instance)
 
-  - Train/Valid subset
-    - Training set: 20,484 clips
-    - Validation set: 8,521 clips
+    - Train/Valid subset
+      - Training set: 20,484 clips
+      - Validation set: 8,521 clips
