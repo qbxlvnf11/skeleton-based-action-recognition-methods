@@ -55,11 +55,6 @@ Datasets
 <p align="center">
 <img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/b75d08bf-3061-4a2b-a3a7-ededa3acdcd2" width="85%"></img> 
 </p>
-  
-  - Details of data
-    - Each action is captured by 3 cameras at the same height but from different horizontal angles: −45, 0, 45
-    - 3D joint locations of each frame detected by Kinect depth sensors
-    - 25 joints for each subject in the skeleton sequences, while each video has no more than 2 subjects
     
   - Cross-subject (X-Sub) Train/Valid subset
     - Training set: 40,320 clips
@@ -70,6 +65,11 @@ Datasets
     - Training set (captured by cameras 2 and 3): 37,920 clips
     - validation set (captured by camera 1): 18,960 clips
 
+  - Details of data
+    - Each action is captured by 3 cameras at the same height but from different horizontal angles: −45, 0, 45
+    - 3D joint locations of each frame detected by Kinect depth sensors
+    - 25 joints for each subject in the skeleton sequences, while each video has no more than 2 subjects
+
 #### - Kinetics-skeleton
 
   - ﻿﻿Download link: https://github.com/open-mmlab/mmskeleton/blob/master/doc/START_RECOGNITION.md
@@ -77,14 +77,14 @@ Datasets
   - Data volume and classes
     - 300,000 videos clips in 400 classes from YouTube videos
     - Kind of classes: refer to https://arxiv.org/pdf/1705.06950.pdf
-    
-  - Details of data
-    - Raw video clips without skeleton data: estimate the locations of 18 joints on every frame of the clips using the publicly available OpenPose toolbox
   
   - Train/Valid subset
     - Training set: 240,000 clips
     - Validation set: 20,000 clips
     - Filtering some data using samples_with_missing_skeletons.txt
+
+  - Details of data
+    - Raw video clips without skeleton data: estimate the locations of 18 joints on every frame of the clips using the publicly available OpenPose toolbox
 
 #### - FineGym
 
@@ -96,6 +96,14 @@ Datasets
     - Kind of classes
       - GYM99 (a more balanced setting): refer to https://sdolivia.github.io/FineGym/resources/dataset/gym99_categories.txt
       - GYM288 (a natural long-tailed setting): refer to https://sdolivia.github.io/FineGym/resources/dataset/gym288_categories.txt
+
+  - Train/Valid subset
+    - Training set: 20,484 clips
+    - Validation set: 8,521 clips
+
+<p align="center">
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/4b9360f5-ca72-4812-a216-6bbc8a981933" width="75%"></img> 
+</p>
         
   - Details of data
     - Organizing both the semantic and temporal annotations hierarchically
@@ -119,6 +127,3 @@ Datasets
       - Locations of all events in a video
       - Locations of sub-actions in an action instance (i.e. event instance)
 
-  - Train/Valid subset
-    - Training set: 20,484 clips
-    - Validation set: 8,521 clips
