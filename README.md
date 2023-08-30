@@ -100,12 +100,12 @@ Datasets
   - Train/Valid subset
     - Training set: 20,484 clips
     - Validation set: 8,521 clips
+      
+<p align="center">
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/4b9360f5-ca72-4812-a216-6bbc8a981933" width="100%"></img> 
+</p>
         
   - Details of data
-
-<p align="center">
-<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/4b9360f5-ca72-4812-a216-6bbc8a981933" width="95%"></img> 
-</p>
 
     - Organizing both the semantic and temporal annotations hierarchically
       
