@@ -98,6 +98,7 @@ Datasets
         
   - Details of data
     - Organizing both the semantic and temporal annotations hierarchically
+      
     - Semantic annotations: three-level categories of actions and sub-actions
       - Events
         - Coarsest level of the hierarchy
@@ -112,6 +113,7 @@ Datasets
         - Finest granularity are element categories
         - Equips sub-actions with more detailed descriptions than the set categories
         - E.g. a sub-action instance of the set beam-dismounts could be more precisely described as double salto backward tucked or other element categories in the set.
+          
     -  Two-levels temporal annotations
       - Locations of all events in a video
       - Locations of sub-actions in an action instance (i.e. event instance)
