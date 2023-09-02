@@ -1,130 +1,321 @@
-Skeleton Based Action Recognition Methods
+PoseC3D
 =============
 
-#### - Skeleton-based action recognition
-  - A computer vision task that involves recognizing human actions from a sequence of 3D skeletal joint data
-  - The goal of skeleton-based action recognition is to develop algorithms that can understand and classify human actions from skeleton data
-  - The gcn-based method (extracting visual features) and the cnn-based method (extracting graph features) are mainly used.
+#### - ﻿Test & Customizing Pytorch PoseC3D code in [official repository](https://github.com/kennymckormick/pyskl/tree/main)
 
-#### - Goals of this repository
-  - Many skeleton-based action-recognition-methods implementation/test/customization etc.
+#### - 3D-CNN-Based PoseC3D: overcoming limitations of existing GCN-based methods
+ 
+  - Robustness
+    
+    - GCN-based methods: Since it is greatly affected by the distribution shift of coordinates, completely different results can be output even with small perturbation in coordinates.
+    - PoseC3D: It showed the powerful generalization performance even when feeding human skeletons data collected in different scenarios or other methods.
+      
+  - Interoperability
+    
+    - GCN-based methods: In the case of existing action recognition, performance has been improved by effectively combining RGB, optical flow, skeletons, etc., but the graphical form of the skeleton representation is difficult to combine, so there is a limitation that this method cannot be used.
+    - PoseC3D: It showed that integrating with other modalities is possible.
+      
+  - Scalability
 
-
-Model List
-=============
-
-#### - 2s-AGCN
-
-```
-@article{2s-AGCN,
-  title={Two-Stream Adaptive Graph Convolutional Networks for Skeleton-Based Action Recognition},
-  author={Lei Shi, Yifan Zhang, Jian Cheng, Hanqing Lu},
-  journal = {IEEE Conference on Computer Vision and Pattern Recognition, 2019},
-  year={2019}
-}
-```
-
-  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN
-
+    - GCN-based methods: In the case of GCN, since all human joints are treated as nodes, the complexity of GCN scales increases linearly with the number of persons. This causes restrictions on action recognition involving multiple persons, such as group activity recognition.
+    - PoseC3D: It showed that can handle a number of people without increasing computational overhead.
+    
 #### - PoseC3D
 
-```
-@article{PoseC3D,
-  title={Revisiting Skeleton-based Action Recognition},
-  author={Haodong Duan, Yue Zhao, Kai Chen, Dahua Lin, Bo Dai},
-  journal = {IEEE Conference on Computer Vision and Pattern Recognition, 2022},
-  year={2022}
-}
-```
+<p align="center">
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/44168111-788b-4240-8c2f-f26999bfaf35" width="80%"></img> 
+</p>
 
-  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D
+  - ﻿﻿Process
+    
+    - Heatmaps of joints or limbs are stacked along the temporal dimension, and pre-processing is applied to create 3D heatmap volumes.
+    - Finally classify 3D heatmap volumes using 3D-CNN
+
+  - Two families of 3D-CNN: PoseConv3D, RGBPose-Conv3D
+      
+  - Reducing redundancy
+    
+    - Subject Centered Cropping: After finding the smallest bounding box of 2D poses created along all frames, all frames are cropped according to the found box and resized to fit the target size.
+    - Uniform Sampling: Uniform sampling strategy for 3D-CNNs that randomly selects one frame from each segment after dividing the video into $N$ segments with the same length.
+      
+  - More details: https://blog.naver.com/qbxlvnf11/223182550920
+
+#### - PoseConv3D for Pose Modality
+
+  - ﻿﻿Two modifications for applying 3D-CNN to skeleton-based action recognition
+
+    - Down-sampling operations, an early stage of 3D-CNN, are eliminated
+    - Shallower (fewer layers) and thinner (fewer channels) networks
+      
+  - Three backbone: 'C3D', 'SlowOnly' (Best), 'X3D'
+      
+<p align="center">
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/5b8fddb4-74db-409d-84fe-fb62f7713814" width="40%"></img> 
+</p>
+
+#### - RGBPose-Conv3D for Ensemble of Pose Modality and RGB Modality
+
+  - ﻿﻿Two-stream 3D-CNN: Pose modality & RGB modality
+    
+  - ​The two pathways are asymmetrical because the properties of the two modalities are different
+    - Compared to the RGB Pathway, the pose pathway has a smaller channel width and depth.
+  
+  - Early-stage feature fusion: bidirectional lateral connections between the two pathways
+
+  - To avoid overfitting, individual cross-entropy loss is used for each pathway.
 
 
-Datasets
+Download Processing Dataset
 =============
 
-### - NTU RGB+D
+#### - Download Processing Dataset
 
-  - ﻿﻿Download link: https://github.com/shahroudy/NTURGB-D
-  
-  - Data volume and classes
-    - 56,000 action clips in 60 action classes
-    - Kind of classes
-      - NTU RGB+D: A1 to A60, NTU RGB+D 120: A1 to A120
+https://github.com/kennymckormick/pyskl/blob/main/tools/data/README.md
 
-<p align="center">
-<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/b75d08bf-3061-4a2b-a3a7-ededa3acdcd2" width="85%"></img> 
-</p>
-    
-  - Cross-subject (X-Sub) Train/Valid subset
-    - Training set: 40,320 clips
-    - validation set: 16,560 
-    - The actors in the two subsets are different
 
-  - Cross-view (X-View) Train/Valid subset
-    - Training set (captured by cameras 2 and 3): 37,920 clips
-    - validation set (captured by camera 1): 18,960 clips
+Download Pretrained Weights, Test Scores
+=============
 
-  - Details of data
-    - Each action is captured by 3 cameras at the same height but from different horizontal angles: −45, 0, 45
-    - 3D joint locations of each frame detected by Kinect depth sensors
-    - 25 joints for each subject in the skeleton sequences, while each video has no more than 2 subjects
+#### - Download PoseC3D pretrained weights and score file
+  - Password: 1234
 
-### - Kinetics-skeleton
+http://naver.me/GCabATkW
 
-  - ﻿﻿Download link: https://github.com/open-mmlab/mmskeleton/blob/master/doc/START_RECOGNITION.md
-  
-  - Data volume and classes
-    - 300,000 videos clips in 400 classes from YouTube videos
-    - Kind of classes: refer to https://arxiv.org/pdf/1705.06950.pdf
-  
-  - Train/Valid subset
-    - Training set: 240,000 clips
-    - Validation set: 20,000 clips
-    - Filtering some data using samples_with_missing_skeletons.txt
+#### - Download PoseC3D pretrained weights of mmaction
 
-  - Details of data
-    - Raw video clips without skeleton data: estimate the locations of 18 joints on every frame of the clips using the publicly available OpenPose toolbox
+https://github.com/open-mmlab/mmaction2/blob/main/configs/skeleton/posec3d/README.md
 
-### - FineGym
+https://download.openmmlab.com/mmaction/skeleton/posec3d/k400_posec3d-041f49c6.pth
 
-  - ﻿﻿Download link: https://sdolivia.github.io/FineGym/
-    
-  - Data volume and classes
-    - 29K videos clips in 99 classes from 303 competition recores, amounted to about 708 hour
-      
-    - Kind of classes
-      - GYM99 (a more balanced setting): refer to https://sdolivia.github.io/FineGym/resources/dataset/gym99_categories.txt
-      - GYM288 (a natural long-tailed setting): refer to https://sdolivia.github.io/FineGym/resources/dataset/gym288_categories.txt
 
-  - Train/Valid subset
-    - Training set: 20,484 clips
-    - Validation set: 8,521 clips
-      
-<p align="center">
-<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/4b9360f5-ca72-4812-a216-6bbc8a981933" width="100%"></img> 
-</p>
-        
-  - Details of data
+Docker Environments
+=============
 
-    - Organizing both the semantic and temporal annotations hierarchically
-      
-    - Semantic annotations: three-level categories of actions and sub-actions
-      - Events
-        - Coarsest level of the hierarchy
-        - Actions belonging to different gymnastic routines
-        - E.g. vault (VT), floor exercise (FX), uneven-bars (UB), and balance-beam (BB)
-      - Sets
-        - Mid-level categories
-        - Describing sub-actions
-        - A set holds several technically and visually similar elements
-        - E.g. Flight-handspring, Beam-Turns, Flight-Salto etc.
-      - Elements
-        - Finest granularity are element categories
-        - Equips sub-actions with more detailed descriptions than the set categories
-        - E.g. a sub-action instance of the set beam-dismounts could be more precisely described as double salto backward tucked or other element categories in the set.
-          
-    - Two-levels temporal annotations
-      - Locations of all events in a video
-      - Locations of sub-actions in an action instance (i.e. event instance)
+#### - Pull docker environment
+
+```
+docker pull qbxlvnf11docker/pose_c3d_env
+```
+
+#### - Run docker environment
+
+```
+nvidia-docker run -it --gpus all --name pose_c3d_env --shm-size=64G -p 8899:8899 -e GRANT_SUDO=yes \
+     --user root -v {root path}:/workspace/PoseC3D \
+     -w /workspace/PoseC3D qbxlvnf11docker/pose_c3d_env bash
+```
+
+
+How to Build Custom Dataset
+=============
+
+#### 1. Create file path & label list text file
+
+  - Create two text file of train & validation
+
+```
+file_path_1 \t label_1
+file_path_2 \t label_2
+...
+```
+
+#### 2. Build custom dataset pkl file
+
+  - Build two pkl file of train & validation
+
+```
+bash tools/dist_run.sh tools/data/custom_2d_skeleton.py {total number of gpus} --gpu_num {using gpu number} \
+    --video-list {file path & label list text file path} \
+    --out {save path of annotation pkl file} \
+    --max_len {max length of frames}
+```
+
+#### 3. Confirm labels of extracted joints throught visualization
+
+```
+python vis_2d_skeletons_labels.py --annotations_path .{path of annotation pkl file} \
+    --save_folder {save folder of visualization videos} \
+    --fps {fps}
+```
+
+#### 4. Modify configuration file to suit custom dataset
+
+  - Refer to './configs/posec3d/slowonly_r50_custom_k400p/s1_joint_custom.py'
+
+
+```
+model = dict(
+    ...
+    cls_head=dict(
+        ...
+        num_classes={number of classes of custom dataset},
+        ...
+        ),
+    ...
+    )
+
+...
+ann_file_train = {path of train annotation pkl file}
+ann_file_val = {path of valid annotation pkl file}
+...
+
+data = dict(
+    ...
+    train=dict(
+        ...
+        dataset=dict(type=dataset_type, ann_file=ann_file_train, pipeline=train_pipeline)
+        ),
+    val=dict(type=dataset_type, ann_file=ann_file_val, pipeline=val_pipeline),
+    test=dict(type=dataset_type, ann_file=ann_file_val, pipeline=test_pipeline)
+    )
+
+...
+
+```
+
+
+Train PoseConv3D
+=============
+
+#### - Train Joint
+
+  - NTU-RGB+D xsub
+ 
+```
+bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_ntu60_xsub/joint.py {total number of gpus} --validate
+```
+
+  - NTU-RGB+D 120 xsub
+ 
+```
+bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_ntu120_xsub/joint.py {total number of gpus} --validate
+```
+
+#### - Train Limb
+
+  - NTU-RGB+D xsub
+ 
+```
+bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_ntu60_xsub/limb.py {total number of gpus} --validate
+```
+
+Fine-Tune PoseConv3D
+=============
+
+#### - Set 'load_from', 'find_unused_parameters' attributes in config file
+
+#### - Loading pre-trained weights of Kinetics 400 dataset, fine-tuning model of UCF101 dataset
+
+```
+bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_ucf101_k400p/s1_joint_custom.py {total number of gpus} --validate
+```
+
+#### - Loading pre-trained weights of Kinetics 400 dataset, fine-tuning model of FineGYM dataset
+
+```
+bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_gym_k400p/s1_joint_custom.py {total number of gpus} --validate
+```
+
+Run Demo Video
+=============
+
+```
+PYTHONPATH="demo/.." python demo/demo_skeleton.py {input video path} {video save path} \
+    --config {config file path} \
+    --checkpoint {checkpoint file path} \
+    --label-map {class name mapping file}
+```
+
+
+PoseConv3D Test Results: NTU-RGB+D xsub
+=============
+
+#### - Test Joint
+
+  - Save prediction score file for testing ensemble of joint & limb 
+
+```
+bash tools/dist_test.sh ./configs/posec3d/slowonly_r50_ntu60_xsub/joint.py \
+    ./work_dirs/posec3d/slowonly_r50_ntu60_xsub/joint/{weights path} {total number of gpus} \
+    --out ./work_dirs/posec3d/slowonly_r50_ntu60_xsub/joint/joint_results.yaml \
+    --eval top_k_accuracy mean_class_accuracy
+```
+
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/a7c397c7-850a-45dd-95f4-455244aebd90" width="20%"></img> 
+
+#### - Test Limb
+
+  - Save prediction score file for testing ensemble of joint & limb 
+
+```
+bash tools/dist_test.sh ./configs/posec3d/slowonly_r50_ntu60_xsub/limb.py \
+    ./work_dirs/posec3d/slowonly_r50_ntu60_xsub/limb/{weights path} {total number of gpus} \
+    --out ./work_dirs/posec3d/slowonly_r50_ntu60_xsub/limb/joint_results.yaml \
+    --eval top_k_accuracy mean_class_accuracy
+```
+
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/a6ff30d9-958e-408c-9793-a4bad120ce34" width="20%"></img> 
+
+#### - Test Ensemble of Joint & Limb
+
+  - Fused score of joint & limb
+
+```
+python ensemble.py ./configs/posec3d/slowonly_r50_ntu60_xsub/joint.py \
+    --work_dir_name slowonly_r50_ntu60_xsub
+```
+
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/0a43fa34-c5bb-4d8b-a46e-84fa60d3b12e" width="20%"></img>
+
+
+PoseConv3D Test Results: NTU-RGB+D 120 xsub
+=============
+
+#### - Test Joint
+
+  - Save prediction score file for testing ensemble of joint & limb
+
+```
+bash tools/dist_test.sh ./configs/posec3d/slowonly_r50_ntu120_xsub/joint.py \
+    ./work_dirs/posec3d/slowonly_r50_ntu120_xsub/joint/{weights path} {total number of gpus} \
+    --out ./work_dirs/posec3d/slowonly_r50_ntu120_xsub/joint/joint_results.yaml \
+    --eval top_k_accuracy mean_class_accuracy
+```
+
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/f691de0c-aba2-4fb1-adbb-f1a1e31cf16f" width="20%"></img> 
+
+
+Fine-Tuning PoseConv3D Test Results: UCF101
+=============
+
+#### - Test Joint
+
+  - Save prediction score file for testing ensemble of joint & limb
+
+```
+bash tools/dist_test.sh ./configs/posec3d/slowonly_r50_ucf101_k400p/s1_joint_custom.py \
+    ./work_dirs/posec3d/slowonly_r50_ucf101_k400p/s1_joint/{weights path} {total number of gpus} \
+    --out ./work_dirs/posec3d/slowonly_r50_ucf101_k400p/s1_joint/joint_results.yaml \
+    --eval top_k_accuracy mean_class_accuracy
+```
+
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/2865e7c2-6db5-4326-86ca-842f9a5b3e47" width="20%"></img> 
+
+
+Fine-Tuning PoseConv3D Test Results: FineGYM
+=============
+
+#### - Test Joint
+
+  - Save prediction score file for testing ensemble of joint & limb
+
+```
+bash tools/dist_test.sh ./configs/posec3d/slowonly_r50_gym_k400p/s1_joint_custom.py \
+    ./work_dirs/posec3d/slowonly_r50_gym_k400p/s1_joint/{weights path} {total number of gpus} \
+    --out ./work_dirs/posec3d/slowonly_r50_gym_k400p/s1_joint/joint_results.yaml \
+    --eval top_k_accuracy mean_class_accuracy
+```
+
+<img src="https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/assets/52263269/0c9ac566-b715-497d-b795-ea2ae9a650fd" width="20%"></img> 
+
 
