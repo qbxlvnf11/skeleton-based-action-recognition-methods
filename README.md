@@ -128,3 +128,19 @@ Datasets
       - Locations of all events in a video
       - Locations of sub-actions in an action instance (i.e. event instance)
 
+### - Goyang Taekwondo Dataset
+
+  - ﻿﻿Download link: https://sdolivia.github.io/FineGym/https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=&topMenu=&aihubDataSe=realm&dataSetSn=71259
+
+  - Data volume and classes
+    - Abount 300,000 Taekwondo action in 64 classes
+    - classes: Refer to download link
+  
+  - Train/Valid subset
+    - Training set: 240,000 Taekwondo action
+    - Validation set: 30,000 Taekwondo action
+      
+  - Details of data
+
+    - 8 directions multi-view camera image
+    - Convert data by dividing three points: start point frame – base point frame – end point frame
