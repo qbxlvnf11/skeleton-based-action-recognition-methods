@@ -143,4 +143,4 @@ Datasets
   - Details of data
 
     - 8 directions multi-view camera image
-    - Convert data by dividing three points: start point frame – base point frame – end point frame
+    - Convert data by dividing three points: start point frame – base point frames – end point frame
