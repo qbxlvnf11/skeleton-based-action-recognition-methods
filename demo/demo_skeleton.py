@@ -61,6 +61,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='PoseC3D demo')
     parser.add_argument('video', help='video file/url')
     parser.add_argument('out_filename', help='output filename')
+    parser.add_argument('--img_folder_path', default=None)
     parser.add_argument(
         '--config',
         default='configs/posec3d/slowonly_r50_ntu120_xsub/joint.py',
@@ -141,6 +142,37 @@ def frame_extraction(video_path, short_side):
         cnt += 1
         flag, frame = vid.read()
 
+    return frame_paths, frames
+
+
+def frame_extraction_images(img_folder_path, short_side):
+
+    file_name_list = os.listdir(img_folder_path)
+    file_name_list.sort()
+    print(' ==> File name list:', file_name_list)
+    
+    frames = []
+    frame_paths = []
+    end = (".png", ".jpg")
+    new_h, new_w = None, None
+    for file_name in file_name_list:
+    
+        if (file_name.endswith(end)):
+            frame_path = os.path.join(img_folder_path, file_name)
+            frame_paths.append(frame_path)
+
+            frame = cv2.imread(frame_path)
+            if new_h is None:
+                h, w, _ = frame.shape
+                new_w, new_h = mmcv.rescale_size((w, h), (short_side, np.Inf)) 
+
+            # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            frame = mmcv.imresize(frame, (new_w, new_h))
+            
+            # plt.imshow(img, interpolation='nearest')
+            # plt.show()
+            frames.append(frame)
+            
     return frame_paths, frames
 
 
@@ -230,8 +262,12 @@ def pose_tracking(pose_results, max_tracks=2, thre=30):
 def main():
     args = parse_args()
 
-    frame_paths, original_frames = frame_extraction(args.video,
-                                                    args.short_side)
+    if not args.img_folder_path is None:
+        frame_paths, original_frames = frame_extraction_images(args.img_folder_path,
+                                                        args.short_side)
+    else:
+        frame_paths, original_frames = frame_extraction(args.video,
+                                                        args.short_side)
     num_frame = len(frame_paths)
     h, w, _ = original_frames[0].shape
 

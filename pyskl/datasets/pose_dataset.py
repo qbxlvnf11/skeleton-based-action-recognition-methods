@@ -95,11 +95,11 @@ class PoseDataset(BaseDataset):
         data = mmcv.load(self.ann_file)
 
         if self.split:
-
             logger.info('='*30 + ' load_pkl_annotations data ' + '='*30)          
             logger.info(' ===> Keys: ' + str(data['split'].keys()))
             for key in data['split'].keys():
                 logger.info(f' ===> Num of {key}: ' + str(len(data['split'][key])))
+
             logger.info(' ===> frame_dir of smaple data: ' + data['annotations'][0]['frame_dir'])
             logger.info(' ===> label of smaple data: ' + str(data['annotations'][0]['label']))
             try:
@@ -115,6 +115,16 @@ class PoseDataset(BaseDataset):
             identifier = 'filename' if 'filename' in data[0] else 'frame_dir'
             split = set(split[self.split])
             data = [x for x in data if x[identifier] in split]
+
+        else:
+            try:
+                logger.info('='*30 + ' load_pkl_annotations data ' + '='*30)   
+                logger.info(' ===> total_frames of smaple data: ' + str(data[0]['total_frames']))
+                logger.info(' ===> keypoint of smaple data: ' + str(data[0]['keypoint'].shape))     
+                logger.info(' ===> keypoint of smaple data: ' + str(data[0]['keypoint_score'].shape))
+                logger.info('='*100)
+            except Exception:
+                pass
 
         for i, item in enumerate(data):
 

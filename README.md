@@ -106,7 +106,7 @@ nvidia-docker run -it --gpus all --name pose_c3d_env --shm-size=64G -p 8899:8899
 ```
 
 
-How to Build Custom Dataset
+How to Build Custom Dataset (HRNet Label)
 =============
 
 #### 1. Create file path & label list text file
@@ -174,6 +174,20 @@ data = dict(
 ```
 
 
+How to Build Custom Dataset (Parsing Label File)
+=============
+
+#### - Build custom dataset pkl file
+
+  - choices of dataset_name parameter: 'Goyang Taekwondo Dataset'
+  
+```
+python convert_pkl_annotations.py --dataset_name {dataset name} \
+    --dataset_folder_path {dataset folder file path} \
+    --save_folder_path {save path of annotation pkl file}
+```
+
+
 Train PoseConv3D
 =============
 
@@ -199,6 +213,7 @@ bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_ntu120_xsub/joint.py {to
 bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_ntu60_xsub/limb.py {total number of gpus} --validate
 ```
 
+
 Fine-Tune PoseConv3D
 =============
 
@@ -215,6 +230,13 @@ bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_ucf101_k400p/s1_joint_cu
 ```
 bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_gym_k400p/s1_joint_custom.py {total number of gpus} --validate
 ```
+
+#### - Loading pre-trained weights of Kinetics 400 dataset, fine-tuning model of Goyang Taekwondo dataset
+
+```
+bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_goyang_taekwondo_k400p/s1_joint_custom.py {total number of gpus} --validate
+```
+
 
 Run Demo Video
 =============

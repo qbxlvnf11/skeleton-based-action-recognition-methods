@@ -99,7 +99,6 @@ class GestureDataset(BaseDataset):
 
             if self.subset is not None:
                 data = [x for x in data if x['label'] in self.subset]
-
         return data
 
     def evaluate(self, results, logger=None, **deprecated_kwargs):
