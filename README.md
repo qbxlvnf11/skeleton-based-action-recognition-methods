@@ -7,7 +7,7 @@ Skeleton-Based Action Recognition Methods
   - The gcn-based method (extracting visual features) and the cnn-based method (extracting graph features) are mainly used.
 
 #### - Goals of this repository
-  - Various skeleton-based action-recognition-methods implementation/test/customization etc.
+  - Various skeleton-based action recognition methods implementation/test/customization etc.
 
 
 Model List
