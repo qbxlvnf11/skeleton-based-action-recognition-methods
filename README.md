@@ -12,7 +12,7 @@ Skeleton-Based Action Recognition Methods
 #### - **Refer to ['Model List' Section](#model-list) or Each Branch**
   - **[2s-AGCN branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)**
   - **[PoseC3D branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D)**
-  - **[CRT-GCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CRT-GCN)**   
+  - **[CTR-GCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CTR-GCN)**   
 
 Model List
 =============
@@ -43,7 +43,7 @@ Model List
 
   - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D
 
-#### - CRT-GCN
+#### - CTR-GCN
 
 ```
 @article{CRT-GCN,
@@ -54,7 +54,7 @@ Model List
 }
 ```
 
-  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CRT-GCN
+  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CTR-GCN
 
 
 Datasets
