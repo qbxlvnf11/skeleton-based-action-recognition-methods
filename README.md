@@ -12,7 +12,7 @@ Skeleton-Based Action Recognition Methods
 #### - **Refer to ['Model List' Section](#model-list) or Each Branch**
   - **[2s-AGCN branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)**
   - **[PoseC3D branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D)**
-    
+  - **[CRT-GCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CRT-GCN)**   
 
 Model List
 =============
@@ -42,6 +42,19 @@ Model List
 ```
 
   - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D
+
+#### - CRT-GCN
+
+```
+@article{CRT-GCN,
+  title={Channel-wise Topology Refinement Graph Convolution for Skeleton-Based Action Recognition},
+  author={Yuxin Chen, Ziqi Zhang, Chunfeng Yuan, Bing Li, Ying Deng, Weiming Hu},
+  journal = {International Conference on Computer Vision, 2021},
+  year={2021}
+}
+```
+
+  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CRT-GCN
 
 
 Datasets
