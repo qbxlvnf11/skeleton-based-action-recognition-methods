@@ -10,8 +10,8 @@ Skeleton-Based Action Recognition Methods
   - Various skeleton-based action recognition methods implementation/test/customization etc.
     
 #### - **Refer to ['Model List' Section](#model-list) or Each Branch**
-    - **[2s-AGCN branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)**
-    - **[PoseC3D branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D)**
+  - **[2s-AGCN branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)**
+  - **[PoseC3D branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D)**
     
 
 Model List
