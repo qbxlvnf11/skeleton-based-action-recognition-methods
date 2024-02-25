@@ -8,7 +8,10 @@ Skeleton-Based Action Recognition Methods
 
 #### - Goals of this repository
   - Various skeleton-based action recognition methods implementation/test/customization etc.
-
+  - **Refer to ['Model List' section](#model-list) or branch**
+    - **[2s-AGCN branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)**
+    - **[PoseC3D branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D)**
+    
 
 Model List
 =============
