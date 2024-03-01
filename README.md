@@ -1,7 +1,7 @@
 Available Model List
 =============
 
-#### - Refer to branches
+#### - Refer to each branch
 
 #### - [2s-AGCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)
 
