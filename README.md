@@ -1,23 +1,7 @@
-Skeleton-Based Action Recognition Methods
+Available Model List
 =============
 
-#### - Skeleton-based action recognition
-  - A computer vision task that involves recognizing human actions from a sequence of 3D skeletal joint data
-  - The goal of skeleton-based action recognition is to develop algorithms that can understand and classify human actions from skeleton data
-  - The gcn-based method (extracting visual features) and the cnn-based method (extracting graph features) are mainly used.
-
-#### - Goals of this repository
-  - Various skeleton-based action recognition methods implementation/test/customization etc.
-    
-#### - **Refer to ['Model List' Section](#model-list) or Each Branch**
-  - **[2s-AGCN branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)**
-  - **[PoseC3D branch](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D)**
-  - **[CTR-GCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CTR-GCN)**   
-
-Model List
-=============
-
-#### - 2s-AGCN
+#### - [2s-AGCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)
 
 ```
 @article{2s-AGCN,
@@ -30,7 +14,7 @@ Model List
 
   - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN
 
-#### - PoseC3D
+#### - [PoseC3D](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D)
 
 ```
 @article{PoseC3D,
@@ -43,7 +27,7 @@ Model List
 
   - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D
 
-#### - CTR-GCN
+#### - [CTR-GCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CTR-GCN)
 
 ```
 @article{CRT-GCN,
@@ -55,6 +39,18 @@ Model List
 ```
 
   - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CTR-GCN
+ 
+
+Skeleton-Based Action Recognition Methods
+=============
+
+#### - Skeleton-based action recognition
+  - A computer vision task that involves recognizing human actions from a sequence of 3D skeletal joint data
+  - The goal of skeleton-based action recognition is to develop algorithms that can understand and classify human actions from skeleton data
+  - The gcn-based method (extracting visual features) and the cnn-based method (extracting graph features) are mainly used.
+
+#### - Goals of this repository
+  - Various skeleton-based action recognition methods implementation/test/customization etc.
 
 
 Datasets
