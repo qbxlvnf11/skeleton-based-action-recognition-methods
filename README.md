@@ -1,6 +1,8 @@
 Available Model List
 =============
 
+#### - Refer to branches
+
 #### - [2s-AGCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN)
 
 ```
@@ -11,8 +13,6 @@ Available Model List
   year={2019}
 }
 ```
-
-  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/2s-AGCN
 
 #### - [PoseC3D](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D)
 
@@ -25,8 +25,6 @@ Available Model List
 }
 ```
 
-  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/PoseC3D
-
 #### - [CTR-GCN](https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CTR-GCN)
 
 ```
@@ -38,8 +36,6 @@ Available Model List
 }
 ```
 
-  - Implementation/Test/Customization codes link: https://github.com/qbxlvnf11/skeleton-based-action-recognition-methods/tree/CTR-GCN
- 
 
 Skeleton-Based Action Recognition Methods
 =============
