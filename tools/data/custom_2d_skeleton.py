@@ -106,7 +106,7 @@ def parse_args():
     # * 2. "xxx.mp4 label" ('label' is an integer (category index),
     # * the result can be used for both training & testing)
     # * All lines should take the same format.
-    parser.add_argument('--video-list', type=str, help='the list of source videos')
+    parser.add_argument('--video-action-annotations', type=str, help='text file path containing video path and corresponding action label')
     # * out should ends with '.pkl'
     parser.add_argument('--out', type=str, help='output pickle name')
     parser.add_argument('--tmpdir', type=str, default='tmp')
@@ -128,7 +128,7 @@ def main():
     args = parse_args()
     assert args.out.endswith('.pkl')
 
-    lines = mrlines(args.video_list)
+    lines = mrlines(args.video_action_annotations)
     lines = [x.split() for x in lines]
     print('==> Samples <==')
     for i in range(len(lines)):

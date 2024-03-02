@@ -8,6 +8,7 @@ import os
 import os.path as osp
 import socket
 import warnings
+from operator import itemgetter
 from mmcv import load
 from mmcv.runner import get_dist_info
 from mmcv.utils import get_logger
@@ -20,6 +21,28 @@ def mc_on(port=22077, launcher='pytorch', size=60000, min_size=6):
     mc_exe = 'memcached' if launcher == 'pytorch' else '/mnt/lustre/share/memcached/bin/memcached'
     os.system(f'{mc_exe} -p {port} -m {size}m -I {min_size}m -d')
 
+
+# def thrla(pre, cfg, outputs=False):
+
+#     if outputs:
+#         if isinstance(data_file, str):
+#             assert osp.exists(data_file)
+#             kv_dict = load(data_file)
+#         else:
+#             if not isinstance(data_file, dict):
+#                 assert isinstance(data_file[0], tuple) and len(data_file[0]) == 2
+#                 data_file = {k: v for k, v in data_file}
+#             kv_dict = data_file
+#     lb = [s[0] for s in sorted(pre, key=itemgetter(1), reverse=True)[:cfg.data.workers_per_gpu]]
+
+#     # tups = [(x['frame_dir'], x) for x in annos]
+#     # tups = [tups[i::num_proc] for i in range(num_proc)]
+#     # args = [(mc_cfg, tup_list) for tup_list in tups]
+#     # pool = mp.Pool(num_proc)
+
+#     if outputs:
+#         return label, returned_feature   
+#     return lb
 
 def cache_file(arg_tuple):
     mc_cfg, data_file = arg_tuple

@@ -94,7 +94,7 @@ Docker Environments
 #### - Pull docker environment
 
 ```
-docker pull qbxlvnf11docker/pose_c3d_env
+docker pull qbxlvnf11docker/pose_c3d_env:korean
 ```
 
 #### - Run docker environment
@@ -102,14 +102,14 @@ docker pull qbxlvnf11docker/pose_c3d_env
 ```
 nvidia-docker run -it --gpus all --name pose_c3d_env --shm-size=64G -p 8899:8899 -e GRANT_SUDO=yes \
      --user root -v {root path}:/workspace/PoseC3D \
-     -w /workspace/PoseC3D qbxlvnf11docker/pose_c3d_env bash
+     -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY \
+     -w /workspace/PoseC3D qbxlvnf11docker/pose_c3d_env:korean bash
 ```
-
 
 How to Build Custom Dataset (HRNet Label)
 =============
 
-#### 1. Create file path & label list text file
+#### 1. Create video action annotations text file
 
   - Create two text file of train & validation
 
@@ -125,7 +125,7 @@ file_path_2 \t label_2
 
 ```
 bash tools/dist_run.sh tools/data/custom_2d_skeleton.py {total number of gpus} --gpu_num {using gpu number} \
-    --video-list {file path & label list text file path} \
+    --video-action-annotations {text file path containing video path and corresponding action label} \
     --out {save path of annotation pkl file} \
     --max_len {max length of frames}
 ```
@@ -155,8 +155,10 @@ model = dict(
     )
 
 ...
+
 ann_file_train = {path of train annotation pkl file}
 ann_file_val = {path of valid annotation pkl file}
+
 ...
 
 data = dict(
@@ -238,8 +240,10 @@ bash tools/dist_train.sh ./configs/posec3d/slowonly_r50_goyang_taekwondo_k400p/s
 ```
 
 
-Run Demo Video
+Run Demo
 =============
+
+#### - Demo a video 
 
 ```
 PYTHONPATH="demo/.." python demo/demo_skeleton.py {input video path} {video save path} \
@@ -248,6 +252,19 @@ PYTHONPATH="demo/.." python demo/demo_skeleton.py {input video path} {video save
     --label-map {class name mapping file}
 ```
 
+#### - Demo videos
+
+  - Save accuracy and prediction results with excel file
+
+```
+PYTHONPATH="demo/.." python demo/demo_skeleton_videos.py \
+    --config {config file path} \
+    --video-folder-path {input videos folder path} \
+    --save-folder-path {save videos folder path} \
+    --checkpoint {checkpoint file path} \
+    --label-map {class name mapping file} \
+    --video-action-annotations {text file path containing video path and corresponding action label}
+```
 
 PoseConv3D Test Results: NTU-RGB+D xsub
 =============

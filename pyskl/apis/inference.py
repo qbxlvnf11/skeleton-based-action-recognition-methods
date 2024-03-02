@@ -11,6 +11,7 @@ from mmcv.runner import load_checkpoint
 from operator import itemgetter
 
 from pyskl.core import OutputHook
+# from pyskl.utils.misc import thrla
 from pyskl.datasets.pipelines import Compose
 from pyskl.models import build_recognizer
 from pyskl.utils import cache_checkpoint
@@ -170,14 +171,22 @@ def inference_recognizer(model, video, outputs=None, as_tensor=True, **kwargs):
     # forward the model
     with OutputHook(model, outputs=outputs, as_tensor=as_tensor) as h:
         with torch.no_grad():
-            scores = model(return_loss=False, **data)[0]
+            pre = model(return_loss=False, **data)[0]
         returned_features = h.layer_outputs if outputs else None
-
-    num_classes = scores.shape[-1]
-    score_tuples = tuple(zip(range(num_classes), scores))
+    
+    num_classes = pre.shape[-1]
+    score_tuples = tuple(zip(range(num_classes), pre))
     score_sorted = sorted(score_tuples, key=itemgetter(1), reverse=True)
+    # lb = thrla(tuple(zip(range(num_classes), pre)),cfg)
 
     top5_label = score_sorted[:5]
+
     if outputs:
         return top5_label, returned_features
     return top5_label
+
+    # if not outputs:
+    #     return lb
+    # else:
+    #     return lb, num_classes
+        
