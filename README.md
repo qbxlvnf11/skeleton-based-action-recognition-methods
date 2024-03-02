@@ -254,7 +254,7 @@ PYTHONPATH="demo/.." python demo/demo_skeleton.py {input video path} {video save
 
 #### - Demo videos
 
-  - Save accuracy and prediction results with excel file
+  - Read video action annotations text file and save accuracy and prediction results of all videos with excel file
 
 ```
 PYTHONPATH="demo/.." python demo/demo_skeleton_videos.py \
