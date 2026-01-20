@@ -1,4 +1,4 @@
-Skeleton-Based Action Recognition Methods
+CTR-GCN
 =============
 
 #### - Skeleton-based action recognition
